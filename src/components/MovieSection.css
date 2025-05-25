@@ -1,0 +1,108 @@
+.movie-section {
+    margin: 40px;
+  }
+  
+  .section-header {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .view-all-link {
+    color: #e91e63;
+    text-decoration: none;
+  }
+  
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0px;
+  }
+  
+  .movie-carousel .swiper-wrapper {
+    margin-left: 8px; /* geser semua slide ke kanan */
+  }
+
+  .movie-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .movie-card {
+    width: 200px;
+    color: black;
+  }
+  
+  @media (max-width: 1200px) {
+    .movie-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .movie-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .movie-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .movie-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .custom-swiper-button-prev.hidden {
+    display: none;
+  }
+  
+  .custom-swiper-button-prev, .custom-swiper-button-next {
+    position: absolute;
+    z-index: 10;
+    top: 40%;
+  }
+  
+  .custom-swiper-button-prev {
+    left: 0;
+  }
+  
+  .custom-swiper-button-next {
+    right: 0;
+    left: 10px;
+  }
+
+  .swiper-button-prev::after{
+  color: white;
+  font-size: 20px;
+  
+  } .swiper-button-next::after {
+  color: white;
+  font-size: 20px;
+  margin-right: 20px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* agar tidak bisa diklik saat sembunyi */
+  }
+
+  .carousel-wrapper:hover .swiper-button-prev,
+  .carousel-wrapper:hover .swiper-button-next {
+    opacity: 1;
+    pointer-events: auto;
+  }
+    
