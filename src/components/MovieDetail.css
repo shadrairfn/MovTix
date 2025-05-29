@@ -62,6 +62,16 @@
   margin-bottom: 1rem;
 }
 
+.cinema-header > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cinema-date {
+  font-size: 0.9rem;
+  color: #777;
+}
+
 .price {
   color: green;
 }
@@ -79,4 +89,23 @@
 
 .showtime-buttons button:hover {
   background: #ccc;
+}
+
+.movie-sinopsis {
+  font-size: 15px;
+  color: #444;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+.toggle-sinopsis {
+  color: #007bff;
+  cursor: pointer;
+  margin-left: 6px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.toggle-sinopsis:hover {
+  text-decoration: underline;
 }

@@ -1,79 +1,78 @@
 .movie-card {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s;
-  }
-  
-  .movie-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .movie-poster {
-    position: relative;
-    height: 300px;
-    overflow: hidden;
-  }
-  
-  .movie-poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .coming-soon-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #e91e63;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-  }
-  
-  .movie-info {
-    padding: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .movie-title {
-    width: 100%;
-    font-size: 16px;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .movie-rating {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .star-icon {
-    color: gold;
-  }
-  
-  .movie-year,
-  .movie-month {
-    color: #999;
-    font-size: 14px;
-  }
-  
-  .card-get-tickets {
-    width: 100%;
-    background-color: #e91e63;
-    color: white;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+.movie-poster {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.coming-soon-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e91e63;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.movie-info {
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.movie-title {
+  width: 100%;
+  font-size: 16px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.star-icon {
+  color: gold;
+}
+
+.movie-year,
+.movie-month {
+  color: #999;
+  font-size: 14px;
+}
+
+.card-get-tickets {
+  width: 100%;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+}

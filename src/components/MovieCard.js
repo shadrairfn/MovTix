@@ -2,16 +2,16 @@ import "./MovieCard.css";
 import { useNavigate } from "react-router-dom";
 
 function MovieCard({ movie }) {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleGetTickets = () => {
-    navigate(`/movie/${movie.id}`); 
+    navigate(`/movie/${movie.id}`);
   };
 
   return (
     <div className="movie-card">
       <div className="movie-poster">
-        <img src={movie.poster} alt={movie.title} />
+        <img src={movie.poster} alt={movie.title} onClick={handleGetTickets} />
       </div>
       <div className="movie-info">
         <h3 className="movie-title">{movie.title}</h3>
