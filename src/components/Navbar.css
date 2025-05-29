@@ -5,11 +5,13 @@
   padding: 15px 20px;
   background-color: #fff;
   border-bottom: 1px solid #000;
+  flex-wrap: wrap;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo-container {
@@ -40,7 +42,7 @@
 .search-container {
   display: flex;
   align-items: center;
-  background-color: #1a1a1a;
+  background-color: #f0f0f0;
   border-radius: 20px;
   padding: 5px 15px;
   width: 300px;
@@ -69,6 +71,7 @@
 .navbar-actions {
   display: flex;
   gap: 15px;
+  align-items: center;
 }
 
 .sign-in-button {
@@ -86,4 +89,21 @@
   padding: 8px 15px;
   border-radius: 5px;
   font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-container {
+    width: 100%;
+  }
 }

@@ -28,7 +28,7 @@ function MovieDetail() {
         <div className="movie-detail-info">
           <h1>{movie.title}</h1>
           <p className="movie-sinopsis">
-            {showFull ? full : preview}{" "}
+            {showFull ? full : preview}
             {sentences.length > 2 && (
               <span
                 className="toggle-sinopsis"

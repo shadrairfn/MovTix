@@ -1,12 +1,11 @@
 import "./Hero.css";
-import movies from "../data/movies"; // sesuaikan path jika perlu
+import movies from "../data/movies";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
 function Hero() {
   const navigate = useNavigate();
 
-  // Ambil movie secara acak hanya 1x render
   const randomMovie = useMemo(() => {
     return movies[Math.floor(Math.random() * movies.length)];
   }, []);
@@ -14,9 +13,7 @@ function Hero() {
   return (
     <div
       className="hero-container"
-      style={{
-        backgroundImage: `url(${randomMovie.poster})`,
-      }}
+      style={{ backgroundImage: `url(${randomMovie.poster})` }}
     >
       <div className="hero-content">
         <h1 className="hero-title">{randomMovie.title}</h1>

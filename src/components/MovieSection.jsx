@@ -1,7 +1,6 @@
 import MovieCard from "./MovieCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import { Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,6 +10,7 @@ import "./MovieSection.css";
 function MovieSection({ title, movies, viewAllLink }) {
   const isNowPlaying = title.toLowerCase() === "now playing";
   const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section className="movie-section">
       <div className="section-header">
@@ -34,6 +34,15 @@ function MovieSection({ title, movies, viewAllLink }) {
               delay: 3000,
               disableOnInteraction: false,
             }}
+            breakpoints={{
+              0: { slidesPerView: 2 },
+              480: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              992: { slidesPerView: 4 },
+              1200: { slidesPerView: 5 },
+              1400: { slidesPerView: 6 },
+              1600: { slidesPerView: 7 },
+            }}
             className="movie-carousel"
           >
             {movies.map((movie) => (
@@ -48,7 +57,6 @@ function MovieSection({ title, movies, viewAllLink }) {
             >
               <div className="swiper-button-prev" />
             </div>
-
             <div className="custom-swiper-button-next">
               <div className="swiper-button-next" />
             </div>
