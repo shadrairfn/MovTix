@@ -1,0 +1,82 @@
+.movie-detail-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  background: #f4f4f4;
+  border-radius: 12px;
+}
+
+.movie-detail-header {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.movie-detail-poster {
+  width: 200px;
+  border-radius: 8px;
+}
+
+.movie-detail-info {
+  flex: 1;
+}
+
+.movie-detail-info h1 {
+  margin-bottom: 0.5rem;
+}
+
+.movie-duration {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.movie-tags .tag {
+  display: inline-block;
+  background: #ddd;
+  color: #333;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.movie-showtimes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cinema-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cinema-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.price {
+  color: green;
+}
+
+.showtime-buttons button {
+  margin-right: 10px;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  border: none;
+  background: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.showtime-buttons button:hover {
+  background: #ccc;
+}

@@ -1,11 +1,17 @@
-import "./MovieCard.css"
+import "./MovieCard.css";
+import { useNavigate } from "react-router-dom";
 
 function MovieCard({ movie }) {
+  const navigate = useNavigate(); 
+
+  const handleGetTickets = () => {
+    navigate(`/movie/${movie.id}`); 
+  };
+
   return (
     <div className="movie-card">
       <div className="movie-poster">
         <img src={movie.poster} alt={movie.title} />
-        {movie.comingSoon && <div className="coming-soon-badge">Coming Soon</div>}
       </div>
       <div className="movie-info">
         <h3 className="movie-title">{movie.title}</h3>
@@ -15,12 +21,12 @@ function MovieCard({ movie }) {
             <span>{movie.rating}</span>
           </div>
         )}
-        {movie.year && <span className="movie-year">{movie.year}</span>}
-        {movie.month && <span className="movie-month">{movie.month}</span>}
       </div>
-      {!movie.comingSoon && <button className="card-get-tickets">Get Tickets</button>}
+      <button className="card-get-tickets" onClick={handleGetTickets}>
+        Get Tickets
+      </button>
     </div>
-  )
+  );
 }
 
-export default MovieCard
+export default MovieCard;
