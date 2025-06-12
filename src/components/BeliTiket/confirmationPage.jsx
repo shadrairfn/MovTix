@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./confirmationPage.css";
 
 function ConfirmationPage() {
-  const { id } = useParams();
   const navigate = useNavigate();
   const [order, setOrder] = useState(null);
   const [bookingCode, setBookingCode] = useState("");

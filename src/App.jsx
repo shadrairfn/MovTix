@@ -5,13 +5,13 @@ import {
   Route,
   useParams,
 } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import MovieSection from "./components/MovieSection";
-import MovieDetail from "./components/MovieDetail";
-import SeatPlan from "./components/seatPlan";
-import PaymentPage from "./components/PaymentPage";
-import ConfirmationPage from "./components/confirmationPage";
+import Navbar from "./components/MainMenu/Navbar";
+import Hero from "./components/MainMenu/Hero";
+import MovieSection from "./components/MainMenu/MovieSection";
+import MovieDetail from "./components/DetailFilm/MovieDetail";
+import SeatPlan from "./components/PilihKursi/seatPlan";
+import PaymentPage from "./components/BeliTiket/PaymentPage";
+import ConfirmationPage from "./components/BeliTiket/confirmationPage";
 import { useEffect, useState } from "react";
 
 function SeatPlanWrapper() {
