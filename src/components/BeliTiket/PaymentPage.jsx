@@ -9,7 +9,6 @@ function PaymentPage() {
   const [order, setOrder] = useState(null);
   const [movie, setMovie] = useState(null);
 
-  // Ambil detail order dari localStorage
   useEffect(() => {
     const savedOrder = localStorage.getItem("pendingOrder");
     if (savedOrder) {
@@ -17,7 +16,6 @@ function PaymentPage() {
     }
   }, []);
 
-  // Fetch detail film berdasarkan ID dari backend
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -57,13 +55,15 @@ function PaymentPage() {
         <img src={movie.poster} alt={movie.judul} className="poster" />
         <div className="movie-info">
           <div className="title-row">
-            <h3>{movie.judul}</h3>
+            <h3 className="movie-title">{movie.judul}</h3>
             <span className="label">{movie.umur || "-"}</span>
           </div>
-          <p className="cinema">{order.cinemaName || "-"}</p>
-          <p className="datetime">
-            {order.date || "-"}, {order.time || "-"}
-          </p>
+          <div className="sub-info">
+            <p className="cinema">{order.cinemaName || "-"}</p>
+            <p className="datetime">
+              {order.date || "-"}, {order.time || "-"}
+            </p>
+          </div>
         </div>
       </div>
 
