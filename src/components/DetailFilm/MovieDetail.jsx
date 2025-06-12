@@ -23,9 +23,9 @@ function MovieDetail() {
           duration: film.durasi,
           description: film.deskripsi,
           releaseDate: film.tanggalRilis,
-          poster: film.poster || "/default-poster.jpg",
-          dimensi: "2D",
-          umur: "13+",
+          poster: film.poster,
+          dimensi: film.dimensi || "2D",
+          umur: film.batas_umur || "13+",
         }));
 
         const found = mapped.find((m) => m.id === id);
