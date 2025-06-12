@@ -1,14 +1,42 @@
 import "./Hero.css";
-import movies from "../data/movies";
 import { useNavigate } from "react-router-dom";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function Hero() {
   const navigate = useNavigate();
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const randomMovie = useMemo(() => {
-    return movies[Math.floor(Math.random() * movies.length)];
+  // Ambil data film dari backend
+  useEffect(() => {
+    fetch("http://localhost:8080/film")
+      .then((res) => res.json())
+      .then((data) => {
+        const mapped = data.map((film) => ({
+          id: film.idFilm,
+          title: film.judul,
+          genre: film.genre,
+          duration: film.durasi,
+          description: film.deskripsi,
+          releaseDate: film.tanggalRilis,
+          poster: film.poster || "/jpeg", // fallback image
+        }));
+        setMovies(mapped);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Gagal fetch film:", err);
+        setLoading(false);
+      });
   }, []);
+
+  // Pilih film acak
+  const randomMovie = useMemo(() => {
+    if (movies.length === 0) return null;
+    return movies[Math.floor(Math.random() * movies.length)];
+  }, [movies]);
+
+  if (loading || !randomMovie) return null;
 
   return (
     <div
@@ -18,7 +46,7 @@ function Hero() {
       <div className="hero-content">
         <h1 className="hero-title">{randomMovie.title}</h1>
         <p className="hero-description">
-          {randomMovie.sinopsis.split(".")[0] + "."}
+          {randomMovie.description.split(".")[0] + "."}
         </p>
         <div className="hero-buttons">
           <button

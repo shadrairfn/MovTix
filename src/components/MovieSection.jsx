@@ -1,15 +1,35 @@
-import MovieCard from "./MovieCard";
+import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { useState } from "react";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "./MovieSection.css";
+import MovieCard from "./MovieCard";
 
-function MovieSection({ title, movies, viewAllLink }) {
+function MovieSection({ title }) {
   const isNowPlaying = title.toLowerCase() === "now playing";
   const [activeIndex, setActiveIndex] = useState(0);
+  const [movies, setMovies] = useState([]);
+
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/film")
+      .then((res) => res.json())
+      .then((data) => {
+        const mapped = data.map((film) => ({
+          id: film.idFilm,
+          title: film.judul,
+          genre: film.genre,
+          duration: film.durasi,
+          description: film.deskripsi,
+          releaseDate: film.tanggalRilis,
+          poster: film.poster,
+        }));
+        setMovies(mapped);
+      });
+  }, []);
 
   return (
     <section className="movie-section">
@@ -21,19 +41,23 @@ function MovieSection({ title, movies, viewAllLink }) {
         <div className="carousel-wrapper">
           <Swiper
             modules={[Navigation, Autoplay]}
-            loop={true}
-            slidesPerView={7}
+            loop={movies.length > 7}
+            slidesPerView={Math.min(7, movies.length)}
             speed={800}
-            navigation={{
-              prevEl: ".custom-swiper-button-prev",
-              nextEl: ".custom-swiper-button-next",
-            }}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            loopFillGroupWithBlank={true}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            onBeforeInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }}
+            className="movie-carousel"
             breakpoints={{
               0: { slidesPerView: 2 },
               480: { slidesPerView: 2 },
@@ -43,21 +67,16 @@ function MovieSection({ title, movies, viewAllLink }) {
               1400: { slidesPerView: 6 },
               1600: { slidesPerView: 7 },
             }}
-            className="movie-carousel"
           >
             {movies.map((movie) => (
               <SwiperSlide key={movie.id}>
                 <MovieCard movie={movie} />
               </SwiperSlide>
             ))}
-            <div
-              className={`custom-swiper-button-prev ${
-                activeIndex === 0 ? "hidden" : ""
-              }`}
-            >
+            <div ref={prevRef} className="custom-swiper-button-prev">
               <div className="swiper-button-prev" />
             </div>
-            <div className="custom-swiper-button-next">
+            <div ref={nextRef} className="custom-swiper-button-next">
               <div className="swiper-button-next" />
             </div>
           </Swiper>

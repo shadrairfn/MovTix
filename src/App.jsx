@@ -1,10 +1,93 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import MovieSection from "./components/MovieSection";
 import MovieDetail from "./components/MovieDetail";
-import movies from "./data/movies";
+import SeatPlan from "./components/seatPlan";
+import PaymentPage from "./components/PaymentPage";
+import ConfirmationPage from "./components/confirmationPage";
+import { useEffect, useState } from "react";
+
+function SeatPlanWrapper() {
+  const { id } = useParams();
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/film")
+      .then((res) => res.json())
+      .then((data) => {
+        const found = data.find((film) => film.idFilm === id);
+        if (found) {
+          setMovie({
+            id: found.idFilm,
+            title: found.judul,
+            genre: found.genre,
+            duration: found.durasi,
+            description: found.deskripsi,
+            releaseDate: found.tanggalRilis,
+            poster: found.poster,
+          });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Gagal mengambil data film:", err);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (!id) return <div>Invalid movie ID</div>;
+  if (loading) return <div>Loading...</div>;
+  if (!movie) return <div>Movie not found</div>;
+
+  return <SeatPlan movie={movie} />;
+}
+
+function ErrorBoundary({ children }) {
+  try {
+    return children;
+  } catch (e) {
+    return <div style={{ color: "red" }}>Error: {e.message}</div>;
+  }
+}
+
+function HomePage() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/film")
+      .then((res) => res.json())
+      .then((data) => {
+        const mapped = data.map((film) => ({
+          id: film.idFilm,
+          title: film.judul,
+          genre: film.genre,
+          duration: film.durasi,
+          description: film.deskripsi,
+          releaseDate: film.tanggalRilis,
+          poster: film.poster,
+        }));
+        setMovies(mapped);
+      })
+      .catch((err) => {
+        console.error("Gagal fetch movies:", err);
+      });
+  }, []);
+
+  return (
+    <>
+      <Hero />
+      <MovieSection title="Now Playing" movies={movies} />
+    </>
+  );
+}
 
 function App() {
   return (
@@ -14,13 +97,20 @@ function App() {
         <Route
           path="/"
           element={
-            <main>
-              <Hero />
-              <MovieSection title="Now Playing" movies={movies} />
-            </main>
+            <ErrorBoundary>
+              <main>
+                <HomePage />
+              </main>
+            </ErrorBoundary>
           }
         />
         <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route
+          path="/movie/:id/selectSeat"
+          element={<SeatPlanWrapper key={window.location.pathname} />}
+        />
+        <Route path="/movie/:id/payment" element={<PaymentPage />} />
+        <Route path="/movie/:id/orderSummary" element={<ConfirmationPage />} />
       </Routes>
     </Router>
   );
