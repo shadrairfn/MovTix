@@ -37,20 +37,54 @@ function MovieDetail() {
         setLoading(false);
       });
 
-    // Fetch bioskop
+    // Fetch bioskop & jadwal
     fetch("http://localhost:8080/bioskop")
       .then((res) => res.json())
-      .then((data) => {
-        const mappedCinemas = data.map((cinema) => ({
-          id_cinemas: cinema.idBioskop,
-          nama: cinema.namaBioskop,
-          lokasi: cinema.lokasi,
-          tanggal: "2025-06-10", // sementara default
-          harga: 50000, // sementara default
-          seatCount: 100, // sementara default
-          times: ["13:00", "15:30", "18:00"], // sementara default
-        }));
-        setCinemas(mappedCinemas);
+      .then(async (data) => {
+        const cinemaWithSchedules = await Promise.all(
+          data.map(async (cinema) => {
+            console.log("bioskop:", cinema);
+            try {
+              const res = await fetch(
+                `http://localhost:8080/jadwal/film/${id}/bioskop/${cinema.idBioskop}`
+              );
+              const scheduleData = await res.json();
+
+              if (scheduleData.length === 0) {
+                return null;
+              }
+
+              const tanggal = new Date(scheduleData[0].waktu)
+                .toISOString()
+                .split("T")[0];
+
+              return {
+                bioskopId: cinema.idBioskop,
+                nama: cinema.namaBioskop,
+                lokasi: cinema.lokasi,
+                tanggal,
+                harga: scheduleData[0].harga,
+                seatCount: scheduleData[0].totalKursi,
+                times: scheduleData.map((s) => ({
+                  time: new Date(s.waktu).toLocaleTimeString("id-ID", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  }),
+                  jadwalId: s.idJadwal,
+                })),
+              };
+            } catch (error) {
+              console.error(
+                "Gagal fetch jadwal untuk bioskop",
+                cinema.idBioskop,
+                error
+              );
+              return null;
+            }
+          })
+        );
+
+        setCinemas(cinemaWithSchedules.filter((c) => c !== null));
       })
       .catch((err) => {
         console.error("Gagal fetch bioskop:", err);
@@ -65,14 +99,18 @@ function MovieDetail() {
   const preview = sentences[0] + (sentences.length > 1 ? "." : "");
   const full = movie.description;
 
-  const handleShowtimeClick = (cinema, time) => {
+  const handleShowtimeClick = (cinema, time, jadwalId) => {
+    console.log("cinema klik:", cinema);
+    console.log("cinema.bioskopId:", cinema.bioskopId); // ✅ diperbaiki
+
     localStorage.setItem(
       "movieSession",
       JSON.stringify({
-        cinemaId: cinema.id_cinemas,
+        jadwalId,
+        cinemaId: cinema.bioskopId,
         cinemaName: cinema.nama,
         date: cinema.tanggal,
-        time: time,
+        time,
         price: cinema.harga,
         seatCount: cinema.seatCount,
       })
@@ -113,11 +151,13 @@ function MovieDetail() {
 
       <div className="movie-showtimes">
         {cinemas.map((cinema) => (
-          <div className="cinema-card" key={cinema.id_cinemas}>
+          <div className="cinema-card" key={cinema.bioskopId}>
+            {" "}
+            {/* ✅ key diganti */}
             <div className="cinema-header">
               <div>
                 <h4>
-                  {cinema.nama} {cinema.lokasi}{" "}
+                  {cinema.nama} {cinema.lokasi}
                 </h4>
                 <span className="cinema-date">{cinema.tanggal}</span>
               </div>
@@ -126,10 +166,10 @@ function MovieDetail() {
               </span>
             </div>
             <div className="showtime-buttons">
-              {cinema.times.map((time) => (
+              {cinema.times.map(({ time, jadwalId }) => (
                 <button
-                  key={time}
-                  onClick={() => handleShowtimeClick(cinema, time)}
+                  key={jadwalId}
+                  onClick={() => handleShowtimeClick(cinema, time, jadwalId)}
                 >
                   {time}
                 </button>

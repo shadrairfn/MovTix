@@ -93,6 +93,8 @@ function SeatPlan({ movie }) {
       umur: movie.umur,
       userName,
       userId,
+      cinemaId: movieSession?.bioskopId,
+      jadwalId: movieSession?.jadwalId, // ✅ dan ini
     };
 
     console.log("Order data:", orderData);
