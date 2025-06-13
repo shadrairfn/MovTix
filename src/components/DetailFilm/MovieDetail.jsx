@@ -23,7 +23,7 @@ function MovieDetail() {
           duration: film.durasi,
           description: film.deskripsi,
           releaseDate: film.tanggalRilis,
-          poster: film.poster,
+          poster: `http://localhost:8080/film/${film.idFilm}/poster`,
           dimensi: film.dimensi || "2D",
           umur: film.batas_umur || "13+",
         }));
@@ -116,7 +116,9 @@ function MovieDetail() {
           <div className="cinema-card" key={cinema.id_cinemas}>
             <div className="cinema-header">
               <div>
-                <h4>{cinema.nama}</h4>
+                <h4>
+                  {cinema.nama} {cinema.lokasi}{" "}
+                </h4>
                 <span className="cinema-date">{cinema.tanggal}</span>
               </div>
               <span className="price">

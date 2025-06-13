@@ -29,7 +29,15 @@ function ConfirmationPage() {
       try {
         const res = await fetch(`http://localhost:8080/film/${id}`);
         const data = await res.json();
-        setMovie(data);
+
+        // Tambahkan properti poster ke objek movie
+        const movieWithPoster = {
+          ...data,
+          poster: `http://localhost:8080/film/${data.idFilm}/poster`,
+          umur: data.batasUmur,
+        };
+
+        setMovie(movieWithPoster);
       } catch (err) {
         console.error("Failed to fetch movie:", err);
       }
@@ -40,6 +48,41 @@ function ConfirmationPage() {
 
   const generateBookingCode = () => {
     return Math.floor(1000 + Math.random() * 9000);
+  };
+
+  const confirmBooking = async () => {
+    const bookingData = {
+      film: { idFilm: movie.idFilm }, // ID film
+      bioskop: { idBioskop: order.bioskopId }, // ID bioskop
+      jadwal: { idJadwal: order.jadwalId }, // ID jadwal
+      kursi: { idKursi: order.seat[0] }, // ID kursi (ambil kursi pertama untuk contoh)
+    };
+
+    console.log("Data yang dikirim ke backend:", bookingData);
+
+    try {
+      const response = await fetch("http://localhost:8080/transaksi/buat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+      }
+
+      const result = await response.text();
+      alert(result); // Tampilkan pesan sukses dari backend
+      localStorage.removeItem("pendingOrder");
+      localStorage.removeItem("bookingCode");
+      navigate("/");
+    } catch (error) {
+      console.error("Error confirming booking:", error);
+      alert("Failed to confirm booking. Please try again.");
+    }
   };
 
   if (!movie || !order) {
@@ -73,9 +116,14 @@ function ConfirmationPage() {
         </div>
       </div>
       <div className="booking-code">
-        <p>Booking Code:</p>
-        <h2>{bookingCode}</h2>
+        <p>Booking QR Code:</p>
+        <div className="qr-code-container">
+          <img src="/QRTicket.jpg" alt="QR Code" className="qr-code-image" />
+        </div>
       </div>
+      <button className="confirm-button" onClick={confirmBooking}>
+        Confirm Booking
+      </button>
       <button
         className="back-button"
         onClick={() => {

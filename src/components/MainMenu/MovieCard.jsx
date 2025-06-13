@@ -11,7 +11,7 @@ function MovieCard({ movie }) {
   return (
     <div className="movie-card">
       <div className="movie-poster" onClick={handleGetTickets}>
-        <img src={movie.poster} alt={movie.title} />
+        <img src={`data:image/jpeg;base64,${movie.poster}`} alt={movie.judul} />
       </div>
       <div className="movie-info">
         <h3 className="movie-title">{movie.title}</h3>

@@ -21,7 +21,14 @@ function PaymentPage() {
       try {
         const res = await fetch(`http://localhost:8080/film/${id}`);
         const data = await res.json();
-        setMovie(data);
+
+        const movieWithPoster = {
+          ...data,
+          poster: `http://localhost:8080/film/${data.idFilm}/poster`,
+          umur: data.batasUmur,
+        };
+
+        setMovie(movieWithPoster);
       } catch (error) {
         console.error("Failed to fetch movie:", error);
       }

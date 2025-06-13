@@ -11,9 +11,10 @@
 }
 
 .section-title {
-  font-size: 24px;
-  color: black;
+  font-size: 30px;
   font-weight: bold;
+  margin: 18px 0 8px 0;
+  letter-spacing: 0.5px;
 }
 
 .view-all-link {
@@ -24,11 +25,11 @@
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0px;
+  gap: 8px;
 }
 
 .movie-carousel .swiper-wrapper {
-  margin-left: 8px; /* geser semua slide ke kanan */
+  margin-left: 8px;
 }
 
 .movie-carousel::-webkit-scrollbar {
@@ -36,31 +37,34 @@
 }
 
 .movie-card {
-  width: 200px;
   color: black;
 }
 
 @media (max-width: 1200px) {
   .movie-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 16px; /* Jarak antar elemen grid untuk layar kecil */
   }
 }
 
 @media (max-width: 992px) {
   .movie-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 }
 
 @media (max-width: 768px) {
   .movie-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .movie-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
@@ -98,7 +102,7 @@
 .swiper-button-next {
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none; /* agar tidak bisa diklik saat sembunyi */
+  pointer-events: none;
 }
 
 .carousel-wrapper:hover .swiper-button-prev,

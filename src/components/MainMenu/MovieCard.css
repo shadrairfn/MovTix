@@ -1,78 +1,85 @@
 .movie-card {
   position: relative;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s;
+  background: #fff;
+  box-shadow: 0 2px 12px #0001;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin: 12px; /* Perbesar jarak antar card */
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px #0002;
 }
 
 .movie-poster {
-  position: relative;
-  height: 300px;
+  height: 260px;
   overflow: hidden;
+  background: #eee;
 }
 
 .movie-poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-}
-
-.coming-soon-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #e91e63;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 12px;
+  border-radius: 10px 10px 0 0;
 }
 
 .movie-info {
-  padding: 10px 0;
+  padding: 12px 14px 0 14px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .movie-title {
-  width: 100%;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: bold;
   margin: 0;
+  color: #222;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .movie-rating {
   display: flex;
   align-items: center;
   gap: 5px;
+  color: #e91e63;
+  font-weight: bold;
 }
 
 .star-icon {
   color: gold;
 }
 
-.movie-year,
-.movie-month {
-  color: #999;
-  font-size: 14px;
-}
-
 .card-get-tickets {
-  width: 100%;
+  width: 90%;
+  margin: 12px auto 14px auto;
   background-color: #e91e63;
   color: white;
   border: none;
-  padding: 8px;
-  border-radius: 5px;
-  margin-top: 10px;
+  padding: 8px 0;
+  border-radius: 6px;
   font-weight: bold;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.card-get-tickets:hover {
+  background: #c2185b;
+}
+
+@media (max-width: 600px) {
+  .movie-card {
+    margin: 6px;
+  }
+  .movie-poster {
+    height: 180px;
+  }
 }

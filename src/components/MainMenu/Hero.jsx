@@ -19,7 +19,7 @@ function Hero() {
           duration: film.durasi,
           description: film.deskripsi,
           releaseDate: film.tanggalRilis,
-          poster: film.poster || "/jpeg", // fallback image
+          poster: `http://localhost:8080/film/${film.idFilm}/poster`,
         }));
         setMovies(mapped);
         setLoading(false);
