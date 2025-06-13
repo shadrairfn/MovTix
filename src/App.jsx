@@ -74,8 +74,8 @@ function HomePage() {
           description: film.deskripsi,
           releaseDate: film.tanggalRilis,
           poster: film.poster,
+          umur: film.batasUmur,
           dimensi: film.dimensi,
-          batasUmur: film.batasUmur,
         }));
         setMovies(mapped);
       })

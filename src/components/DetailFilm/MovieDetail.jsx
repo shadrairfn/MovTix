@@ -25,7 +25,7 @@ function MovieDetail() {
           releaseDate: film.tanggalRilis,
           poster: `http://localhost:8080/film/${film.idFilm}/poster`,
           dimensi: film.dimensi,
-          umur: film.batas_umur,
+          umur: film.batasUmur,
         }));
 
         const found = mapped.find((m) => m.id === id);
