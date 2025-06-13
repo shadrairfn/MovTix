@@ -33,6 +33,7 @@ function SeatPlanWrapper() {
             description: found.deskripsi,
             releaseDate: found.tanggalRilis,
             poster: found.poster,
+            batasUmur: found.batasUmur,
           });
         }
         setLoading(false);
@@ -73,6 +74,8 @@ function HomePage() {
           description: film.deskripsi,
           releaseDate: film.tanggalRilis,
           poster: film.poster,
+          dimensi: film.dimensi,
+          batasUmur: film.batasUmur,
         }));
         setMovies(mapped);
       })

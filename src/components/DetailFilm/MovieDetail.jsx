@@ -24,8 +24,8 @@ function MovieDetail() {
           description: film.deskripsi,
           releaseDate: film.tanggalRilis,
           poster: `http://localhost:8080/film/${film.idFilm}/poster`,
-          dimensi: film.dimensi || "2D",
-          umur: film.batas_umur || "13+",
+          dimensi: film.dimensi,
+          umur: film.batas_umur,
         }));
 
         const found = mapped.find((m) => m.id === id);

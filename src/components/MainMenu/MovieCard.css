@@ -16,6 +16,8 @@
 }
 
 .movie-poster {
+  position: relative;
+  cursor: pointer;
   height: 260px;
   overflow: hidden;
   background: #eee;
@@ -26,6 +28,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
+  position: relative;
 }
 
 .movie-info {
@@ -82,4 +85,18 @@
   .movie-poster {
     height: 180px;
   }
+}
+
+.age-label {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 2;
+  border: 1px solid red;
 }
