@@ -5,9 +5,10 @@
   background: #fff;
   box-shadow: 0 2px 12px #0001;
   transition: transform 0.2s, box-shadow 0.2s;
-  margin: 12px; /* Perbesar jarak antar card */
+  margin: 12px;
   display: flex;
   flex-direction: column;
+  font-family: "Urbanist", sans-serif;
 }
 
 .movie-card:hover {
@@ -20,7 +21,7 @@
   cursor: pointer;
   height: 260px;
   overflow: hidden;
-  background: #eee;
+  background: #e0b1cb;
 }
 
 .movie-poster img {
@@ -28,7 +29,6 @@
   height: 100%;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
-  position: relative;
 }
 
 .movie-info {
@@ -42,7 +42,7 @@
   font-size: 17px;
   font-weight: bold;
   margin: 0;
-  color: #222;
+  color: #231942;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #e91e63;
+  color: #be95c4;
   font-weight: bold;
 }
 
@@ -64,7 +64,7 @@
 .card-get-tickets {
   width: 90%;
   margin: 12px auto 14px auto;
-  background-color: #e91e63;
+  background-color: #be95c4;
   color: white;
   border: none;
   padding: 8px 0;
@@ -75,13 +75,14 @@
 }
 
 .card-get-tickets:hover {
-  background: #c2185b;
+  background: #9f86c0;
 }
 
 @media (max-width: 600px) {
   .movie-card {
     margin: 6px;
   }
+
   .movie-poster {
     height: 180px;
   }
@@ -91,12 +92,12 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(35, 25, 66, 0.8);
   color: #fff;
   padding: 4px 8px;
   border-radius: 8px;
   font-size: 0.75rem;
   font-weight: bold;
   z-index: 2;
-  border: 1px solid red;
+  border: 1px solid #e0b1cb;
 }

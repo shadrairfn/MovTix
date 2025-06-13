@@ -2,8 +2,10 @@
   max-width: 900px;
   margin: auto;
   padding: 2rem;
-  background: #f4f4f4;
-  border-radius: 12px;
+  background: #f9f5fc;
+  border-radius: 16px;
+  font-family: "Urbanist", sans-serif;
+  color: #231942;
 }
 
 .movie-detail-header {
@@ -14,7 +16,8 @@
 
 .movie-detail-poster {
   width: 200px;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .movie-detail-info {
@@ -22,23 +25,26 @@
 }
 
 .movie-detail-info h1 {
+  font-size: 28px;
   margin-bottom: 0.5rem;
+  color: #5e548e;
 }
 
 .movie-duration {
   font-size: 16px;
-  color: #555;
+  color: #777;
   margin-bottom: 0.5rem;
 }
 
 .movie-tags .tag {
   display: inline-block;
-  background: #ddd;
-  color: #333;
+  background: #e0b1cb;
+  color: #231942;
   padding: 4px 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   margin-right: 10px;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .movie-showtimes {
@@ -48,18 +54,19 @@
 }
 
 .cinema-card {
-  background: #fff;
-  border-radius: 10px;
+  background: white;
+  border-radius: 16px;
   padding: 1rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .cinema-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1rem;
+  color: #5e548e;
 }
 
 .cinema-header > div {
@@ -69,37 +76,40 @@
 
 .cinema-date {
   font-size: 0.9rem;
-  color: #777;
+  color: #9f86c0;
 }
 
 .price {
-  color: green;
+  color: #28a745;
+  font-weight: bold;
 }
 
 .showtime-buttons button {
   margin-right: 10px;
   margin-bottom: 8px;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border: none;
-  background: #eee;
-  border-radius: 6px;
+  background: #be95c4;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 500;
   transition: background 0.2s;
 }
 
 .showtime-buttons button:hover {
-  background: #ccc;
+  background: #9f86c0;
 }
 
 .movie-sinopsis {
   font-size: 15px;
-  color: #444;
+  color: #333;
   margin-top: 0.75rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .toggle-sinopsis {
-  color: #007bff;
+  color: #5e548e;
   cursor: pointer;
   margin-left: 6px;
   font-weight: bold;

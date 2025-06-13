@@ -4,23 +4,20 @@
   align-items: center;
   padding: 15px 20px;
   background-color: #fff;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #5e548e;
   flex-wrap: wrap;
+  font-family: "Urbanist", sans-serif;
 }
 
-.navbar-logo {
+.navbar-logo,
+.logo-container {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
 .logo-square {
-  background-color: #e91e63;
+  background-color: #231942;
   color: white;
   width: 30px;
   height: 30px;
@@ -36,13 +33,13 @@
   margin-left: 8px;
   font-weight: bold;
   font-size: 18px;
-  color: black;
+  color: #5e548e;
 }
 
 .search-container {
   display: flex;
   align-items: center;
-  background-color: #f0f0f0;
+  background-color: #e0b1cb;
   border-radius: 20px;
   padding: 5px 15px;
   width: 300px;
@@ -51,20 +48,20 @@
 .search-input {
   background: transparent;
   border: none;
-  color: black;
+  color: #231942;
   width: 100%;
   padding: 8px 0;
   outline: none;
 }
 
 .search-input::placeholder {
-  color: #777;
+  color: #9f86c0;
 }
 
 .search-button {
   background: transparent;
   border: none;
-  color: #777;
+  color: #9f86c0;
   cursor: pointer;
 }
 
@@ -75,15 +72,16 @@
 }
 
 .sign-in-button {
-  background-color: black;
+  background-color: #5e548e;
   border: none;
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
 }
 
-.get-tickets-button {
-  background-color: #e91e63;
+.get-tickets-button,
+.lihat-tiket-btn {
+  background-color: #be95c4;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -98,12 +96,9 @@
     gap: 10px;
   }
 
-  .navbar-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-
+  .navbar-actions,
   .search-container {
     width: 100%;
+    justify-content: space-between;
   }
 }

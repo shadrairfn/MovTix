@@ -12,6 +12,7 @@ import MovieDetail from "./components/DetailFilm/MovieDetail";
 import SeatPlan from "./components/PilihKursi/seatPlan";
 import PaymentPage from "./components/BeliTiket/PaymentPage";
 import ConfirmationPage from "./components/BeliTiket/confirmationPage";
+import LihatTiket from "./components/LihatTiket/LihatTiket";
 import { useEffect, useState } from "react";
 
 function SeatPlanWrapper() {
@@ -114,6 +115,7 @@ function App() {
         />
         <Route path="/movie/:id/payment" element={<PaymentPage />} />
         <Route path="/movie/:id/orderSummary" element={<ConfirmationPage />} />
+        <Route path="/lihattiket" element={<LihatTiket />} />
       </Routes>
     </Router>
   );

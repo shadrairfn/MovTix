@@ -1,9 +1,10 @@
 .movie-section {
   margin: 40px;
+  font-family: "Urbanist", sans-serif;
 }
 
 .section-header {
-  color: black;
+  color: #231942;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,8 +19,9 @@
 }
 
 .view-all-link {
-  color: #e91e63;
+  color: #be95c4;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .movie-grid {
@@ -28,43 +30,28 @@
   gap: 8px;
 }
 
-.movie-carousel .swiper-wrapper {
-  margin-left: 8px;
-}
-
-.movie-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.movie-card {
-  color: black;
-}
-
 @media (max-width: 1200px) {
   .movie-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px; /* Jarak antar elemen grid untuk layar kecil */
+    gap: 16px;
   }
 }
 
 @media (max-width: 992px) {
   .movie-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
   }
 }
 
 @media (max-width: 768px) {
   .movie-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .movie-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
   }
 }
 
@@ -88,14 +75,10 @@
   left: 10px;
 }
 
-.swiper-button-prev::after {
-  color: white;
-  font-size: 20px;
-}
+.swiper-button-prev::after,
 .swiper-button-next::after {
-  color: white;
+  color: #5e548e;
   font-size: 20px;
-  margin-right: 20px;
 }
 
 .swiper-button-prev,

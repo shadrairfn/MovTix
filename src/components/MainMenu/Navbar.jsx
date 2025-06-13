@@ -12,6 +12,14 @@ function Navbar() {
         </div>
         <span className="logo-text">MovieTix</span>
       </div>
+      <div className="navbar-right">
+        <button
+          className="lihat-tiket-btn"
+          onClick={() => navigate("/lihattiket")}
+        >
+          Lihat Tiket
+        </button>
+      </div>
     </nav>
   );
 }

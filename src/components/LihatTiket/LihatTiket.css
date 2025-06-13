@@ -1,0 +1,54 @@
+.lihat-tiket-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Urbanist", sans-serif;
+  background-color: #f4f0fa;
+}
+
+.lihat-tiket-container h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #5e548e;
+  font-weight: bold;
+}
+
+.tiket-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.tiket-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(35, 25, 66, 0.15);
+  padding: 24px;
+  width: 280px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+
+.tiket-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(35, 25, 66, 0.2);
+}
+
+.tiket-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #231942;
+  margin-bottom: 12px;
+}
+
+.tiket-card p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.tiket-card strong {
+  color: #000;
+}

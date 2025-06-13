@@ -9,9 +9,9 @@
   display: flex;
   align-items: center;
   color: white;
+  font-family: "Urbanist", sans-serif;
 }
 
-/* Tambahkan overlay gelap agar teks tetap terbaca */
 .hero-container::before {
   content: "";
   position: absolute;
@@ -19,19 +19,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+  background: linear-gradient(to right, rgba(35, 25, 66, 0.8), transparent);
   z-index: 1;
 }
 
 .hero-content {
   padding: 40px;
   max-width: 50%;
-  z-index: 2; /* agar di atas overlay */
+  z-index: 2;
 }
 
 .hero-title {
   font-size: 42px;
   margin-bottom: 15px;
+  color: #e0b1cb;
 }
 
 .hero-description {
@@ -47,7 +48,7 @@
 }
 
 .get-tickets-button {
-  background-color: #e91e63;
+  background-color: #be95c4;
   color: white;
   border: none;
   padding: 10px 20px;

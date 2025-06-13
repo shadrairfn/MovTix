@@ -1,38 +1,47 @@
-/* Container utama */
 .CinemaPlan {
   width: 600px;
   margin: 32px auto 64px auto;
-  background: #fafbfc;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px #0002;
+  background: #f9f5fc;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(35, 25, 66, 0.15);
   padding: 28px 20px 40px 20px;
   transition: box-shadow 0.2s;
-  border: 1.5px solid #e0e0e0;
+  border: 1.5px solid #e0b1cb;
+  font-family: "Urbanist", sans-serif;
+  color: #231942;
 }
 
 .session-movie-title {
   font-size: 2.2rem;
+  font-weight: bold;
+  color: #5e548e;
+  text-align: center;
 }
 
 .session-cinema-name {
   font-size: 1rem;
+  color: #9f86c0;
+  text-align: center;
+  margin-bottom: 8px;
 }
 
 .choose-title,
 .session-time {
   text-align: center;
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #5e548e;
 }
 
 .seat-showcase,
 .ShowCase {
   margin: 24px 16px 16px 16px;
-  padding: 0;
   display: flex;
   gap: 24px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .ShowCase li {
@@ -54,26 +63,25 @@
   margin: 18px 16px 12px 16px;
   text-align: center;
   font-size: 15px;
-  color: #333;
+  color: #444;
 }
 
 .selected-seats {
-  color: #e91e63;
+  color: #be95c4;
+  font-weight: bold;
 }
 
 .alert-max-seat {
   color: #e91e63;
-  margin-top: 12px;
-  margin-bottom: 8px;
+  background-color: #fdecef;
+  border: 1px solid #f8b5c2;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-weight: bold;
+  font-size: 14px;
   text-align: center;
-  background: none;
-  border: none;
-  border-radius: 0;
-  padding: 0;
   max-width: 260px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 12px auto 8px auto;
 }
 
 .success-popup-fixed {
@@ -92,20 +100,24 @@
 }
 
 .buy-btn {
-  background: linear-gradient(90deg, #16a34a 60%, #15803d 100%);
+  background: linear-gradient(90deg, #9f86c0 0%, #be95c4 100%);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 10px 28px;
+  border-radius: 12px;
+  padding: 12px 28px;
   font-size: 1.1rem;
   font-weight: bold;
-  margin-top: 12px;
-  margin-bottom: 8px;
+  margin-top: 20px;
   cursor: pointer;
-  box-shadow: 0 2px 8px #16a34a33;
+  box-shadow: 0 4px 12px rgba(159, 134, 192, 0.4);
   transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
   width: 90%;
   max-width: 260px;
+}
+
+.buy-btn:hover {
+  transform: scale(1.03);
+  background: linear-gradient(90deg, #5e548e 0%, #9f86c0 100%);
 }
 
 .buy-btn:disabled,
@@ -127,9 +139,8 @@
 .screen {
   width: 100%;
   max-width: 308px;
-  min-width: 308px;
   height: 28px;
-  background: linear-gradient(90deg, #222 60%, #444 100%);
+  background: linear-gradient(90deg, #231942 0%, #5e548e 100%);
   color: #fff;
   border-radius: 10px 10px 18px 18px;
   margin: 18px 0 26px 0;
@@ -137,12 +148,7 @@
   line-height: 28px;
   font-weight: bold;
   letter-spacing: 2px;
-  box-shadow: 0 2px 8px #0002;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .seats {
@@ -157,7 +163,7 @@
 .seat {
   width: 34px;
   height: 34px;
-  background: #444;
+  background: #5e548e;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -165,22 +171,20 @@
   color: #fff;
   font-size: 15px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(94, 84, 142, 0.2);
   border: none;
-  outline: none;
-  user-select: none;
-  box-shadow: 0 1px 4px #0001;
 }
 
 .seat.selected {
-  background: #6feaf6;
-  color: #222;
+  background: #be95c4;
+  color: #231942;
   font-weight: bold;
-  box-shadow: 0 2px 8px #6feaf688;
+  box-shadow: 0 2px 12px rgba(190, 149, 196, 0.5);
 }
 
 .seat.occupied {
-  background: #ccc;
+  background: #ddd;
   color: #888;
   cursor: not-allowed;
   box-shadow: none;
@@ -191,26 +195,23 @@
   color: #222;
   border: 2px solid #ffb700;
   font-weight: bold;
-  box-shadow: 0 2px 8px #ffe06688;
+  box-shadow: 0 2px 8px rgba(255, 224, 102, 0.5);
 }
 
 .seat:hover:not(.occupied):not(.selected) {
-  background: #7de0ff;
+  background: #e0b1cb;
   transform: scale(1.08);
-  box-shadow: 0 2px 8px #7de0ff88;
+  box-shadow: 0 2px 12px rgba(224, 177, 203, 0.5);
 }
 
 @media (max-width: 400px) {
   .CinemaPlan {
     width: 98vw;
-    min-width: unset;
-    max-width: 100vw;
     padding-bottom: 16px;
   }
+
   .screen,
   .seats {
     width: 98vw;
-    min-width: unset;
-    max-width: 100vw;
   }
 }
